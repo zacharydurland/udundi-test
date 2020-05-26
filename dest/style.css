@@ -1,14 +1,15 @@
 body {
   height: 100vh;
-  width: 100vw;
-  background-repeat: no-repeat;
-  background-size: cover;
   font-size: 14px; }
 
 .background {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   background-image: url(https://cdn.glitch.com/61c2686c-d683-47b6-a5e3-1dd789d4e030%2Fjohannes-plenio-unsplash-reduced.jpg?v=1590460892283);
   height: 100vh;
   background-repeat: no-repeat;
@@ -23,7 +24,8 @@ body {
 main #content {
   height: 100vh; }
   main #content > .row {
-    height: 100%; }
+    height: 100%;
+    overflow-y: hidden; }
   main #content #panelLeft {
     background-color: #611818;
     position: relative; }
@@ -31,12 +33,13 @@ main #content {
 .card-state-closed {
   position: absolute;
   bottom: 8rem;
-  left: -230px;
-  transition: opacity 1s ease-out; }
+  left: -230px; }
   .card-state-closed h1#title {
+    display: inline-block;
     font-size: 13rem;
     color: white;
-    font-family: serif; }
+    font-family: serif;
+    opacity: 0; }
   .card-state-closed .btn-open {
     position: relative;
     top: -45px;
@@ -45,20 +48,31 @@ main #content {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 0; }
     .card-state-closed .btn-open .text {
       position: relative;
       left: -10px;
       color: white;
       font-size: 18px; }
+  .card-state-closed.active h1#title {
+    animation-name: fade-in-up;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-direction: normal; }
+  .card-state-closed.active .btn-open {
+    animation-name: fade-in-up;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-delay: 250ms;
+    animation-direction: normal; }
 
 .card-state-open {
   display: none;
   opacity: 0;
   position: absolute;
   top: 50%;
-  transform: translate(-33%, -50%);
-  transition: all 1s ease; }
+  transform: translate(-33%, -50%); }
   .card-state-open .card {
     border-radius: 0;
     width: 36rem; }
@@ -138,102 +152,95 @@ main #content {
   .icon-container.white {
     background-color: white; }
 
-/* mobile styles adjusted but an afterthought here  */
-@media (max-width: 768px) {
+/* mobile styles adjusted but an afterthought here ------------------------- */
+/* single query to handle smartphones  */
+@media (max-width: 576px) {
   .card-state-closed {
-    position: relative;
-    left: 0;
-    top: -162px;
-    transition: opacity 1s ease-out; }
-    .card-state-closed h1#title {
-      font-size: 11rem;
-      color: white;
-      font-family: serif; }
-    .card-state-closed .btn-open {
-      position: relative;
-      top: -45px;
-      left: 0;
-      color: #611818;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      cursor: pointer; }
-      .card-state-closed .btn-open .text {
-        position: relative;
-        left: -10px;
-        color: white;
-        font-size: 18px; }
-  .card-state-open {
-    display: none;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 1s ease;
-    transform: translateX(0); }
-    .card-state-open .card {
-      width: 100vw; }
-    .card-state-open.active {
-      display: block;
-      animation-name: clip-wipe-down;
-      animation-duration: 1.25s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards; }
-    .card-state-open.wipe-up {
-      animation-name: clip-wipe-up; } }
-
-@media (max-width: 460px) {
-  .card-state-closed {
-    position: relative;
-    left: 0;
-    top: -59px; }
+    bottom: 8rem;
+    left: 15px;
+    top: -60px; }
     .card-state-closed h1#title {
       font-size: 4rem; }
     .card-state-closed .btn-open {
-      position: relative;
-      top: 0;
-      left: 0;
-      color: #611818;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      cursor: pointer; }
-      .card-state-closed .btn-open .text {
-        position: relative;
-        left: -10px;
-        color: white;
-        font-size: 18px; }
+      top: -10px;
+      left: 15px; }
   .card-state-open {
     display: none;
     opacity: 0;
     position: fixed;
+    overflow-y: auto;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    transition: all 1s ease;
-    transform: translateX(0);
-    overflow-y: scroll; }
+    width: 100vw;
+    transform: translate(0, 0); }
     .card-state-open .card {
-      width: 100vw; }
+      width: 100vw;
+      position: relative; }
+      .card-state-open .card .btn-close {
+        position: absolute;
+        right: 35px;
+        top: 25px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .card-state-open .card .btn-close > span {
+          color: #611818;
+          font-size: 35px;
+          cursor: pointer; }
+      .card-state-open .card .card-title {
+        z-index: 1; }
       .card-state-open .card .card-body {
-        padding: 25px; }
+        padding: 25px 25px; }
+      .card-state-open .card .card-text {
+        overflow-y: auto; }
     .card-state-open.active {
-      display: block;
-      animation-name: clip-wipe-down;
-      animation-duration: 1.25s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards; }
-    .card-state-open.wipe-up {
-      animation-name: clip-wipe-up; } }
+      /* reveal animation changed for mobile */
+      animation-name: clip-wipe-down; } }
+
+/* animation ------------------------------- */
+.fade-in-up {
+  animation-name: fade-in-up;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-duration: 1s; }
+
+.fade-out-children > * {
+  animation-name: fade-out;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-duration: 1s; }
+
+.delay-250 {
+  animation-delay: 250ms; }
+
+.delay-500 {
+  animation-delay: 500ms; }
+
+.delay-1s {
+  animation-delay: 1s; }
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(200px); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+@keyframes fade-out {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
 
 @keyframes clip-from-diamond {
   0% {
     opacity: 0;
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); }
-  25% {
+    clip-path: polygon(25% 0, 100% 25%, 75% 100%, 0 75%); }
+  15% {
     opacity: 1; }
   100% {
     opacity: 1;

@@ -2,9 +2,6 @@ $brandColor : #611818;
 
 body {
   height: 100vh;
-  width: 100vw;
-  background-repeat: no-repeat;
-  background-size: cover;
   font-size: 14px;
 }
 
@@ -12,6 +9,10 @@ body {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  left: 0;
+  right:0;
+  top:0;
+  bottom:0;
   background-image: url(https://cdn.glitch.com/61c2686c-d683-47b6-a5e3-1dd789d4e030%2Fjohannes-plenio-unsplash-reduced.jpg?v=1590460892283);
   height: 100vh;
   background-repeat: no-repeat;
@@ -30,6 +31,7 @@ main {
     height: 100vh;
     &>.row {
       height: 100%;
+      overflow-y:hidden;
     }
     #panelLeft{
       background-color: $brandColor;
@@ -44,11 +46,12 @@ main {
   position: absolute;
   bottom: 8rem;
   left: -230px;
-  transition: opacity 1s ease-out;
   h1#title {
+    display:inline-block;
     font-size: 13rem;
     color: white;
-    font-family: serif
+    font-family: serif;
+    opacity:0;
   }
   .btn-open {
     position:relative;
@@ -59,6 +62,7 @@ main {
     justify-content:flex-start;
     align-items: center;
     cursor: pointer;
+    opacity:0;
     .text {
       position: relative;
       left: -10px;
@@ -66,6 +70,22 @@ main {
       font-size: 18px;
     }
   }
+  &.active {
+    h1#title {
+      animation-name: fade-in-up;
+      animation-duration: 1.5s;
+      animation-fill-mode: forwards;
+      animation-direction:normal;
+    }
+    .btn-open {
+      animation-name: fade-in-up;
+      animation-duration: 1.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 250ms;
+      animation-direction:normal;
+    }
+    }
+
 }
 
 
@@ -75,7 +95,7 @@ main {
   position: absolute;
   top: 50%;
   transform: translate(-33%,-50%);
-  transition: all 1s ease;
+  
   .card {
     border-radius: 0;
     width: 36rem;
@@ -176,141 +196,145 @@ main {
 }
 
 
-/* mobile styles adjusted but an afterthought here  */
+/* mobile styles adjusted but an afterthought here ------------------------- */
+/* single query to handle smartphones  */
 
-
-@media  (max-width: 768px) {
-
-    .card-state-closed {
-      position: relative;
-      left: 0;
-        top: -162px;
-      transition: opacity 1s ease-out;
-      h1#title {
-        font-size: 11rem;
-        color: white;
-        font-family: serif
+@media (max-width: 576px) {
+  
+  
+  .card-state-closed {
+    bottom: 8rem;
+    left: 15px;
+    top: -60px;
+    h1#title {
+      font-size: 4rem;
     }
     .btn-open {
-      position:relative;
-      top: -45px;
-      left: 0;
-      color: $brandColor;
-      display: flex;
-      justify-content:flex-start;
-      align-items: center;
-      cursor: pointer;
-      .text {
-        position: relative;
-        left: -10px;
-        color: white;
-        font-size: 18px;
-      }
+      top: -10px;
+      left: 15px;
     }
-      
   }
   
   
-
   .card-state-open {
     display:none;
     opacity:0;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position:fixed;
+    overflow-y:auto;
+    top:0;
+    left:0;
     right: 0;
     bottom: 0;
-    transition: all 1s ease;
-    transform: translateX(0);
+    width: 100vw;
+    transform: translate(0,0);
+    
     .card {
       width: 100vw;
-    }
-    &.active{
-      display:block;
-      animation-name: clip-wipe-down;
-      animation-duration: 1.25s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
-    }
-    &.wipe-up {
-        animation-name: clip-wipe-up;
-      }
-  }
-}
-
-
-
-
-@media (max-width: 460px) {
-
-    .card-state-closed {
-      position: relative;
-      left: 0;
-      top: -59px;
-      h1#title {
-        font-size: 4rem;
-    }
-    .btn-open {
       position:relative;
-      top: 0;
-      left: 0;
-      color: $brandColor;
-      display: flex;
-      justify-content:flex-start;
-      align-items: center;
-      cursor: pointer;
-      .text {
-        position: relative;
-        left: -10px;
-        color: white;
-        font-size: 18px;
+      .btn-close {
+        position:absolute;
+        right: 35px;
+        top: 25px;
+        cursor: pointer;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        & > span {
+          color: $brandColor;
+          font-size: 35px;
+          cursor: pointer;
+        }
       }
-    }
-  }
-  
-
-  .card-state-open {
-    display:none;
-    opacity:0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 1s ease;
-    transform: translateX(0);
-    overflow-y: scroll;
-    .card {
-      width: 100vw;
+      .card-title {
+        z-index:1
+      }
       .card-body {
-        padding: 25px;
+        padding: 25px 25px;
+      }
+      .card-text {
+        overflow-y: auto;
       }
     }
+    
     &.active{
-      display:block;
+      /* reveal animation changed for mobile */
       animation-name: clip-wipe-down;
-      animation-duration: 1.25s;
-      animation-timing-function: ease;
-      animation-fill-mode: forwards;
     }
-    &.wipe-up {
-        animation-name: clip-wipe-up;
-      }
   }
 
-  
 }
 
+
+
+
+
+
+/* animation ------------------------------- */
+
+
+.fade-in-up {
+  animation-name: fade-in-up;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+}
+
+
+.fade-out-children {
+  > * {
+  animation-name: fade-out;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-duration: 1s;
+  }
+}
+
+.delay-250 {
+  animation-delay: 250ms
+}
+
+.delay-500 {
+  animation-delay: 500ms
+}
+
+.delay-1s {
+  animation-delay: 1s
+}
+
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 
 
 @keyframes clip-from-diamond {
+
   0% {
     opacity: 0;
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+    clip-path: polygon(25% 0, 100% 25%, 75% 100%, 0 75%);
   }
-  25% {
+  
+ 15% {
     opacity: 1;
   }
+  
   100% {
     opacity: 1;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
