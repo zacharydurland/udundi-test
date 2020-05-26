@@ -1,7 +1,10 @@
 # udundi-test
 
-Live Website Running Here
+1. Live Website Running Here
 https://glitch.com/~udundi-test
+
+2. Post submission and improved version : https://udundi-test-b.glitch.me.
+This Includes better animation toggling and mobile layout.
 
 Summary
 ------------
