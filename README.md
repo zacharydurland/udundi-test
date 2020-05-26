@@ -1,20 +1,20 @@
 # udundi-test
 
-1. Live Website Running Here
-https://glitch.com/~udundi-test
+1. For Submission -  Live Website Running Here
+https://udundi-test.glitch.me
 
-2. Post submission and improved version : https://udundi-test-b.glitch.me.
+2. Improved Version for consideration : https://udundi-test-b.glitch.me.
 This Includes better animation toggling and mobile layout.
 
 Summary
 ------------
-Althought the majority of the test was completed within a couple of hours, the vast majority of the 6 or so hours went into conceptualizing and implementing the transition animations, refactoring, and some trial and error. Finally, some time was spent on the mobile styles.
+Althought the majority of the test was completed within a couple of hours, the vast majority of the 6 or so hours went into conceptualizing and implementing the transition animations, refactoring, and some trial and error. Finally, some time was spent on the mobile styles. I could likely re-code this project is about two hours to the quality of the improved version above.
 
-The layout has a very print-like, large-format feel and I chose animations that take advantage that. Slow fades and swipes are slightly cinematic and still work on the mobile versions in inspector testing, aesthetically speaking.
+The layout has a very print-like, large-format feel and I chose animations that take advantage that. Slow fades and swipes are slightly cinematic and still work on the mobile versions in inspector testing, aesthetically speaking. The recommended library is used in the submitted version, but the improved version opts for a custom approach. 
 
-I used the recommended animation library for the initial "Explore" fade and a custom animation for the reveal of the detail box. I had been wanting to return to the clip CSS property and work with detecting animation completion to help toggle between states. 
+Bootstrap is used for the grid system to replicate the columed-looking layout and the iteractive content is offset from that grid to create the target effect. 
 
-The HTML structure reflects this in that two sibling chunks are treated as state of the UI, similar to website that have wholey separate mobile menus, rather than restyling the one. I preferred having separate groups of elements in this case, rather than shoehorning the "Explore" text into two different layouts and completely rewriting its CSS for "open" or "active state. 
+The HTML structure reflects this in that two sibling chunks are treated as state of the UI, similar to websites that have wholey separate mobile menus, rather than restyling the one large tree. 
 
 The project is hosted on Glitch.com for ease of spin-up, export to Github, and sharing with your team. 
 
