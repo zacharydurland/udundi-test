@@ -3,9 +3,10 @@ $brandColor : #611818;
 
 body {
   background-image: url(https://cdn.glitch.com/61c2686c-d683-47b6-a5e3-1dd789d4e030%2Fjohannes-plenio-unsplash-reduced.jpg?v=1590460892283);
-    height: 100vh;
+  height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
+  font-size: 14px;
 }
 
 
@@ -27,33 +28,27 @@ main {
 
 #innerContent {
   position: absolute;
-  bottom: 15%;
-  left: 25%;
+  bottom: 8rem;
+  left: -230px;
   h1#title {
     font-size: 13rem;
     color: white;
     font-family: serif
   }
   .btn-open {
+    position:relative;
+    top: -45px;
+    left: 50px;
     color: $brandColor;
     display: flex;
     justify-content:flex-start;
     align-items: center;
-    margin-left: 25px;
     cursor: pointer;
-    .open-icon-container {
-      width: 43px;
-      height: 43px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color:white;
-      margin-right: 25px;
-    }
     .text {
+      position: relative;
+      left: -10px;
       color: white;
-      font-size: 25px;
+      font-size: 18px;
     }
   }
 }
@@ -63,6 +58,7 @@ main {
   display:none;
   .card {
     border-radius: 0;
+    width: 36rem;
     .btn-close {
       position:absolute;
       right: 25px;
@@ -79,34 +75,71 @@ main {
       }
     }
     .card-body {
-      padding: 50px 75px;
+      padding: 50px 60px;
       border-radius: 0;
       .card-title {
         font-family: serif;
         color: $brandColor;
         font-size: 4rem;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
       }
       .underline {
         height: 2px;
         width: 66%;
-        margin-bottom: 33px;
+        margin-bottom: 20px;
         background: rgb(97,24,24);
         background: linear-gradient(90deg, rgba(97,24,24,1) 0%, rgba(255,255,255,0) 100%);
       }
       .card-text {
         line-height: 30px;
         color: #505050;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
+        font-size: 1rem;
       }
       .btn.btn-primary {
         border-radius: 0;
         background: rgb(97,24,24);
         text-transform: uppercase;
-        padding: 12px 30px;
+        padding: 10px 60px;
         border: none;
         background: linear-gradient(90deg, rgba(97,24,24,1) 0%, rgba(163,103,84,1) 100%);
+        letter-spacing: 1px
       }
     }
+  }
+}
+
+
+#social {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  color: white;
+  &>a {
+    display:block;
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
+    margin-bottom: 15px;
+    color:white;
+  }
+  #socialInstagram {
+    border-radius: 50%;
+  }
+}
+
+
+
+.icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  padding-top: 1px;
+  &.white {
+    background-color:white;
   }
 }
