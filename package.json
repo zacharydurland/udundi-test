@@ -1,0 +1,22 @@
+{
+  "name": "node-sass-middleware",
+  "version": "1.0.0",
+  "description": "Example project showing how to use node-sass-middleware",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "node-sass-middleware": "^0.11.0"
+  },
+  "engines": {
+    "node": "11.x"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "sass"
+  ],
+  "license": "MIT"
+}

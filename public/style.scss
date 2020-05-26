@@ -1,0 +1,112 @@
+$brandColor : #611818;
+
+
+body {
+  background-image: url(https://cdn.glitch.com/61c2686c-d683-47b6-a5e3-1dd789d4e030%2Fjohannes-plenio-unsplash-reduced.jpg?v=1590460892283);
+    height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+main {
+  #content {
+    height: 100vh;
+    &>.row {
+      height: 100%;
+    }
+    #panelLeft{
+      background-color: $brandColor;
+      position: relative;
+    }
+  }
+}
+
+
+
+
+#innerContent {
+  position: absolute;
+  bottom: 15%;
+  left: 25%;
+  h1#title {
+    font-size: 13rem;
+    color: white;
+    font-family: serif
+  }
+  .btn-open {
+    color: $brandColor;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    margin-left: 25px;
+    cursor: pointer;
+    .open-icon-container {
+      width: 43px;
+      height: 43px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color:white;
+      margin-right: 25px;
+    }
+    .text {
+      color: white;
+      font-size: 25px;
+    }
+  }
+}
+
+
+.card-state-open {
+  display:none;
+  .card {
+    border-radius: 0;
+    .btn-close {
+      position:absolute;
+      right: 25px;
+      top: 15px;
+      cursor: pointer;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      & > span {
+        color: $brandColor;
+        font-size: 22px;
+        cursor: pointer;
+      }
+    }
+    .card-body {
+      padding: 50px 75px;
+      border-radius: 0;
+      .card-title {
+        font-family: serif;
+        color: $brandColor;
+        font-size: 4rem;
+        margin-bottom: 20px;
+      }
+      .underline {
+        height: 2px;
+        width: 66%;
+        margin-bottom: 33px;
+        background: rgb(97,24,24);
+        background: linear-gradient(90deg, rgba(97,24,24,1) 0%, rgba(255,255,255,0) 100%);
+      }
+      .card-text {
+        line-height: 30px;
+        color: #505050;
+        margin-bottom: 50px;
+      }
+      .btn.btn-primary {
+        border-radius: 0;
+        background: rgb(97,24,24);
+        text-transform: uppercase;
+        padding: 12px 30px;
+        border: none;
+        background: linear-gradient(90deg, rgba(97,24,24,1) 0%, rgba(163,103,84,1) 100%);
+      }
+    }
+  }
+}
