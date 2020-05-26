@@ -7,6 +7,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 14px;
+  overflow:hidden;
 }
 
 
@@ -27,9 +28,15 @@ main {
 
 
 #innerContent {
+  
+}
+
+
+.card-state-closed {
   position: absolute;
   bottom: 8rem;
   left: -230px;
+  transition: opacity 1s ease-out;
   h1#title {
     font-size: 13rem;
     color: white;
@@ -56,6 +63,11 @@ main {
 
 .card-state-open {
   display:none;
+  opacity:0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-33%,-50%);
+  transition: all 1s ease;
   .card {
     border-radius: 0;
     width: 36rem;
@@ -82,6 +94,7 @@ main {
         color: $brandColor;
         font-size: 4rem;
         margin-bottom: 15px;
+        
       }
       .underline {
         height: 2px;
@@ -107,6 +120,16 @@ main {
       }
     }
   }
+  &.active{
+    display:block;
+    animation-name: clip-from-diamond;
+    animation-duration: 1.25s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+  }
+  &.wipe-up {
+      animation-name: clip-wipe-up;
+    }
 }
 
 
@@ -141,5 +164,37 @@ main {
   padding-top: 1px;
   &.white {
     background-color:white;
+  }
+}
+
+
+@keyframes clip-from-diamond {
+  0% {
+    opacity: 0;
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+
+
+@keyframes clip-wipe-up {
+  0% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  99% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  100% {
+    opacity: 0;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   }
 }
