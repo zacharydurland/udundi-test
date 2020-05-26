@@ -10,7 +10,9 @@ Summary
 ------------
 Althought the majority of the test was completed within a couple of hours, the vast majority of the 6 or so hours went into conceptualizing and implementing the transition animations, refactoring, and some trial and error. Finally, some time was spent on the mobile styles. I could likely re-code this project is about two hours to the quality of the improved version above.
 
-The layout has a very print-like, large-format feel and I chose animations that take advantage that. Slow fades and swipes are slightly cinematic and still work on the mobile versions in inspector testing, aesthetically speaking. The recommended library is used in the submitted version, but the improved version opts for a custom approach. 
+The layout has a very print-like, large-format feel and I chose animations that take advantage that. Slow fades and swipes are slightly cinematic and still work on the mobile versions in inspector testing, aesthetically speaking. The recommended library is used in the submitted version, but the improved version opts for a custom approach.
+
+I have embelished the background to saturate on load to bring the page to life a bit more.
 
 Bootstrap is used for the grid system to replicate the columed-looking layout and the iteractive content is offset from that grid to create the target effect. 
 
